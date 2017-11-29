@@ -1,0 +1,35 @@
+{
+  "name": "conception-uml",
+  "version": "1.0.1",
+  "main": "./src/index.js",
+  "scripts": {
+    "babelify": "./node_modules/.bin/watchify ./src/index.js -t [babelify] -o ./dist/conception-uml.js",
+    "coverage": "./node_modules/.bin/cross-env NODE_ENV=test ./node_modules/.bin/nyc ./node_modules/.bin/mocha --recursive test/unit",
+    "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "dev": "npm run sync | npm run babelify",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "sync": "./node_modules/.bin/browser-sync start --server --files \"./dist/conception-uml.js\"",
+    "test": "./node_modules/.bin/mocha --require babel-register --recursive test/unit"
+  },
+  "author": "Karim Zghali",
+  "license": "M2I",
+  "dependencies": {
+    "ui-design": "latest"
+  },
+  "devDependencies": {
+    "babelify": "latest",
+    "babel-plugin-istanbul": "latest",
+    "babel-preset-env": "latest",
+    "babel-register": "latest",
+    "browser-sync": "latest",
+    "chai": "latest",
+    "cross-env": "latest",
+    "coveralls": "latest",
+    "jsdom": "latest",
+    "mocha": "latest",
+    "mocha-lcov-reporter": "latest",
+    "nyc": "latest",
+    "sinon": "latest",
+    "watchify": "latest"
+  }
+}
